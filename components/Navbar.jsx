@@ -16,7 +16,7 @@ export default function Navbar() {
     { label: "Contact", href: "/contact" },
   ];
 
-  const phoneNumber = "0664449653"; // WhatsApp number
+  const phoneNumber = "27723340746"; // Inqothovu WhatsApp number (country code included)
   const handleWhatsAppOrder = () => {
     const message = "Hello! I would like to place an order with Inqothovu Smelling Good.";
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
@@ -103,7 +103,7 @@ export default function Navbar() {
       {/* Styles */}
       <style jsx>{`
         :global(.text-primary) {
-          color: #d41ed3;
+          color: #d41ed3; /* Inqothovu purple */
         }
 
         .nav-link {
@@ -113,7 +113,7 @@ export default function Navbar() {
         }
 
         .nav-link:hover {
-          color: #1df4f7;
+          color: #1df4f7; /* Inqothovu cyan */
         }
 
         .nav-link::after {
