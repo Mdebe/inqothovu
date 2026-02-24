@@ -35,7 +35,7 @@ Total: R ${total}
 
 Please assist me with payment details.`;
 
-    const phoneNumber = "27723340746"; // Update if needed
+    const phoneNumber = "27664449653"; // Update if needed
 
     window.open(
       `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
