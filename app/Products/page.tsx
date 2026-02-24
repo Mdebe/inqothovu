@@ -39,7 +39,7 @@ export default function ProductsPage() {
   const handleCheckout = () => {
     const phoneNumber = "27664449653";
     const orderList = cart.map((item) => item.name).join(", ");
-    const message = `Hello Inqothovu Smelling Good! I would like to order: ${orderList}. Total: R ${total}`;
+    const message = `Hello Inqothovu Smelling Good! I would like to orderr: ${orderList}. Total: R ${total}`;
     window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
   };
 
