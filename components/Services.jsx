@@ -8,25 +8,25 @@ const products = [
   {
     title: ["Car", "Diffuser"],
     desc: "Long-lasting luxury car fragrance.",
-    price: "R120",
+    price: "R50.00",
     img: "/images/perfume-hero-2.jpg",
   },
   {
     title: ["House", "Diffuser"],
     desc: "Premium reed diffuser for your home.",
-    price: "R250",
+    price: "R200.00",
     img: "/images/perfume-hero-1.jpg",
   },
   {
     title: ["Roll-On", "Fragrance"],
     desc: "Compact and powerful roll-on scent.",
-    price: "R80",
+    price: "R30.00",
     img: "/images/perfume-hero-2.jpg",
   },
   {
     title: ["Luxury", "Perfume"],
     desc: "Bold and unforgettable fragrance.",
-    price: "R350",
+    price: "R100.00",
     img: "/images/perfume-hero-2.jpg",
   },
 ];
@@ -105,17 +105,8 @@ function ProductCard({ product }) {
           <p className="text-xl font-bold mb-5" style={{ color: primary }}>
             {product.price}
           </p>
-
-          {/* Add to Cart Button */}
-          <button
-            onClick={handleAddToCart}
-            className="px-6 py-3 rounded-full text-white font-semibold transition transform hover:scale-105"
-            style={{
-              background: `linear-gradient(90deg, ${primary}, ${accent})`,
-            }}
-          >
-            {added ? "Added ✓" : "Add to Cart"}
-          </button>
+ 
+           
         </div>
       </div>
     </motion.div>

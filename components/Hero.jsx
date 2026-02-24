@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 const slides = [
   {
@@ -31,19 +32,9 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  const primary = "#d41ed3";   // Purple
-  const accent = "#1df4f7";    // Cyan
-  const secondary = "#a0a9a6"; // Soft gray
-
-  // WhatsApp order details
-  const phoneNumber = "0664449653"; // Replace with your WhatsApp number
-  const handleWhatsAppOrder = () => {
-    const message = `Hello! I'm interested in your ${slides[current].title} - ${slides[current].subtitle}.`;
-    window.open(
-      `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`,
-      "_blank"
-    );
-  };
+  const primary = "#d41ed3";
+  const accent = "#1df4f7";
+  const secondary = "#a0a9a6";
 
   return (
     <section className="relative h-[85vh] w-full overflow-hidden">
@@ -73,7 +64,9 @@ export default function Hero() {
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             {slides[current].title}
             <br />
-            <span style={{ color: accent }}>{slides[current].subtitle}</span>
+            <span style={{ color: accent }}>
+              {slides[current].subtitle}
+            </span>
           </h1>
 
           <p className="mt-5 text-lg" style={{ color: secondary }}>
@@ -82,15 +75,16 @@ export default function Hero() {
             bulk stock across Richards Bay.
           </p>
 
-          <button
-            onClick={handleWhatsAppOrder}
+          {/* ✅ Linked to Products Page */}
+          <Link
+            href="/products"
             className="inline-block mt-8 px-7 py-3 rounded-md font-semibold text-white transition hover:scale-105"
             style={{
               background: `linear-gradient(90deg, ${primary}, ${accent})`,
             }}
           >
             Shop Now →
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -103,7 +97,8 @@ export default function Hero() {
             aria-label={`Slide ${i + 1}`}
             className="h-3 w-3 rounded-full transition"
             style={{
-              backgroundColor: i === current ? accent : "rgba(255,255,255,0.4)",
+              backgroundColor:
+                i === current ? accent : "rgba(255,255,255,0.4)",
             }}
           />
         ))}
@@ -112,7 +107,9 @@ export default function Hero() {
       {/* Accent Bar */}
       <div
         className="absolute bottom-0 w-full h-10 z-20"
-        style={{ background: `linear-gradient(90deg, ${primary}, ${accent})` }}
+        style={{
+          background: `linear-gradient(90deg, ${primary}, ${accent})`,
+        }}
       />
     </section>
   );

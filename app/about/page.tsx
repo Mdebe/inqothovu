@@ -97,6 +97,38 @@ export default function AboutUsPage() {
             ))}
           </div>
         </section>
+                {/* Business Profile Download Section */}
+        <section className="py-20 px-6 bg-white">
+          <div className="max-w-5xl mx-auto text-center">
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="bg-gradient-to-r from-[#d41ed3] to-[#1df4f7] rounded-3xl p-12 shadow-2xl text-white"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Download Our Business Profile
+              </h2>
+
+              <p className="text-lg mb-8 max-w-2xl mx-auto text-white/90">
+                Learn more about Inqothovu Smelling Good, our products,
+                wholesale opportunities, and company vision.
+                Download our full business profile in PDF format.
+              </p>
+
+              <a
+                href="/Inqothovu-Business-Profile.pdf"
+                download
+                className="inline-block bg-white text-[#d41ed3] font-semibold px-8 py-4 rounded-full shadow-lg hover:shadow-[0_0_25px_rgba(255,255,255,0.6)] transition transform hover:scale-105"
+              >
+                Download PDF →
+              </a>
+            </motion.div>
+
+          </div>
+        </section>
 
         {/* Why Choose Us Section */}
         <section className="py-16 px-6 max-w-7xl mx-auto">
