@@ -6,17 +6,17 @@ import Link from "next/link";
 
 const slides = [
   {
-    image: "/images/perfume-hero-1.jpg",
+    image: "/images/hero4.jpg",
     title: "Luxury Fragrances",
     subtitle: "That Last All Day",
   },
   {
-    image: "/images/perfume-hero-2.jpg",
+    image: "/images/hero2.jpg",
     title: "Car & Home Diffusers",
     subtitle: "Fresh Every Moment",
   },
   {
-    image: "/images/perfume-hero-2.jpg",
+    image: "/images/hero3.jpg",
     title: "Wholesale & Retail",
     subtitle: "Available in Stock",
   },

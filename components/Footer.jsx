@@ -38,6 +38,7 @@ export default function Footer() {
             <li><Link href="/about" className="hover:text-black transition">About Us</Link></li>
             <li><Link href="/products" className="hover:text-black transition">Our Products</Link></li>
             <li><Link href="/bulk" className="hover:text-black transition">Bulk Orders</Link></li>
+            <li><Link href="/downloadapp" className="hover:text-black transition">Download App</Link></li>
             <li><Link href="/contact" className="hover:text-black transition">Contact</Link></li>
           </ul>
         </div>

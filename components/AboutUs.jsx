@@ -21,7 +21,7 @@ export default function AboutUs() {
           transition={{ duration: 0.8 }}
         >
           <Image
-            src="/images/perfume-hero-2.jpg" // replace with your desired image
+            src="/images/car.jpg" // replace with your desired image
             alt="Inqothovu Smelling Good"
             fill
             className="object-cover rounded-3xl"

@@ -42,7 +42,7 @@ export default function AboutUsPage() {
               transition={{ duration: 0.8 }}
             >
                <Image
-                         src="/images/perfume-hero-2.jpg" // replace with your desired image
+                         src="/images/hero1.jpg" // replace with your desired image
                          alt="Inqothovu Smelling Good"
                          fill
                          className="object-cover rounded-3xl"
@@ -76,9 +76,9 @@ export default function AboutUsPage() {
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { title: "Car Diffusers", desc: "Premium fragrances for your car.", img: "/images/perfume-hero-2.jpg" },
-              { title: "House Diffusers", desc: "Keep your home fresh every day.", img: "/images/perfume-hero-1.jpg" },
-              { title: "Perfumes & Roll-ons", desc: "Luxury scents for all occasions.", img: "/images/perfume-hero-2.jpg" },
+              { title: "Car Diffusers", desc: "Premium fragrances for your car.", img: "/images/car.jpg" },
+              { title: "House Diffusers", desc: "Keep your home fresh every day.", img: "/images/house.png" },
+              { title: "Perfumes & Roll-ons", desc: "Luxury scents for all occasions.", img: "/images/hero1.jpg" },
             ].map((item, i) => (
               <motion.div
                 key={i}

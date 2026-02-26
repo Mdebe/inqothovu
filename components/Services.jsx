@@ -9,25 +9,25 @@ const products = [
     title: ["Car", "Diffuser"],
     desc: "Long-lasting luxury car fragrance.",
     price: "R50.00",
-    img: "/images/perfume-hero-2.jpg",
+    img: "/images/car.jpg",
   },
   {
     title: ["House", "Diffuser"],
     desc: "Premium reed diffuser for your home.",
     price: "R200.00",
-    img: "/images/perfume-hero-1.jpg",
+    img: "/images/house.png",
   },
   {
     title: ["Roll-On", "Fragrance"],
     desc: "Compact and powerful roll-on scent.",
     price: "R30.00",
-    img: "/images/perfume-hero-2.jpg",
+    img: "/images/hero1.jpg",
   },
   {
     title: ["Luxury", "Perfume"],
     desc: "Bold and unforgettable fragrance.",
     price: "R100.00",
-    img: "/images/perfume-hero-2.jpg",
+    img: "/images/pe1.png",
   },
 ];
 

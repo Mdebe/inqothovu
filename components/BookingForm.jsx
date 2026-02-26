@@ -44,7 +44,7 @@ export default function BookingForm() {
               required
               value={formData.name}
               onChange={handleChange}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none"
+              className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none text-black placeholder-gray-500 appearance-none"
             />
             <input
               type="email"
@@ -53,7 +53,7 @@ export default function BookingForm() {
               required
               value={formData.email}
               onChange={handleChange}
-              className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none"
+              className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none text-black placeholder-gray-500 appearance-none"
             />
           </div>
 
@@ -62,7 +62,7 @@ export default function BookingForm() {
             required
             value={formData.service}
             onChange={handleChange}
-            className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none"
+            className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none text-black appearance-none"
           >
             <option value="">Select a Service</option>
             <option value="computer">Computer Skills Training</option>
@@ -76,7 +76,7 @@ export default function BookingForm() {
             required
             value={formData.date}
             onChange={handleChange}
-            className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none"
+            className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none text-black appearance-none"
           />
 
           <textarea
@@ -85,7 +85,7 @@ export default function BookingForm() {
             rows="4"
             value={formData.message}
             onChange={handleChange}
-            className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none"
+            className="w-full p-4 border border-gray-300 rounded-xl focus:ring-2 focus:ring-accent outline-none text-black placeholder-gray-500 appearance-none"
           ></textarea>
 
           <button

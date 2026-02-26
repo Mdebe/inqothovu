@@ -13,10 +13,10 @@ type Product = {
 };
 
 const products: Product[] = [
-  { name: "Car Diffuser", price: 50, img: "/images/perfume-hero-1.jpg" },
-  { name: "House Diffuser", price: 200, img: "/images/perfume-hero-2.jpg" },
-  { name: "Roll-on Perfume", price: 30, img: "/images/perfume-hero-1.jpg" },
-  { name: "Luxury Perfume", price: 100, img: "/images/perfume-hero-2.jpg" },
+  { name: "Car Diffuser", price: 50, img: "/images/car.jpg" },
+  { name: "House Diffuser", price: 200, img: "/images/house.png" },
+  { name: "Roll-on Perfume", price: 30, img: "/images/hero1.jpg" },
+  { name: "Luxury Perfume", price: 100, img: "/images/pe1.png" },
 ];
 
 export default function ProductsPage() {
