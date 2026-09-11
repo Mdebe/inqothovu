@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import Services from "@/components/Services";
 import WhyUs from "@/components/WhyUs";
 import AboutUs from "@/components/AboutUs";
+import InqothovuShowcase from "@/components/InqothovuShowcase";
 import FAQ from "@/components/FAQ";
 import BookingForm from "@/components/BookingForm";
 import Contact from "@/components/Contact"
@@ -15,12 +16,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <AboutUs />
+    
       <Services />
-     
+       <InqothovuShowcase />
       
       <FAQ />
        
-      <Contact />
+      
       <Footer />
       <WhatsAppButton />
     </>
