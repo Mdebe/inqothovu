@@ -1,155 +1,115 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FaBars, FaTimes, FaPhoneAlt } from "react-icons/fa";
+import { usePathname } from "next/navigation";
+import { FaBars, FaTimes, FaShoppingBag } from "react-icons/fa";
 
 export default function Navbar() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About Us", href: "/about" },
-    { label: "Our Products", href: "/products" },
+    { label: "Products", href: "/products" },
     { label: "Gallery", href: "/gallery" },
     { label: "Bulk Orders", href: "/bulk-order" },
     { label: "Contact", href: "/contact" },
   ];
 
-  const phoneNumber = "27723340746"; // Inqothovu WhatsApp number (country code included)
-  const handleWhatsAppOrder = () => {
-    const message = "Hello! I would like to place an order with Inqothovu Smelling Good.";
-    window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, "_blank");
-  };
+  useEffect(() => {
+    document.body.style.overflow = open? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
 
   return (
-    <header className="bg-white shadow-md sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 h-[100px]">
+    <>
+      <header className="sticky top-0 z-[100] w-full bg-white/95 backdrop-blur-md border-b border-black/5 shadow-sm">
+        <div className="mx-auto max-w-7xl px-4 h-20 flex items-center justify-between gap-4">
 
-        {/* Logo */}
-        <div className="flex items-center h-full">
-          <Link href="/">
+          <Link href="/" className="flex items-center shrink-0 h-full" aria-label="Inqothovu Home">
             <Image
-              src="/logo.png"
-              alt="Inqothovu Smelling Good Logo"
-              width={250}
+              src="/logo_nav.jpg"
+              alt="Inqothovu Logo"
+              width={80}
               height={80}
-              className="h-[80px] w-auto object-contain"
+              className="w-20 h-20 object-contain"
               priority
             />
           </Link>
-        </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center justify-center flex-1 gap-10">
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              className="nav-link text-primary font-semibold"
-            >
-              {item.label}
-            </Link>
-          ))}
-
-          {/* WhatsApp Order Button */}
-          <button
-            onClick={handleWhatsAppOrder}
-            className="ml-6 flex items-center gap-2 rounded-md px-6 py-3 text-sm font-semibold text-white transition hover:opacity-90 cta-btn"
-          >
-            <FaPhoneAlt />
-            Order Now
-          </button>
-        </nav>
-
-        {/* Mobile Hamburger */}
-        <button
-          className="md:hidden text-primary"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <FaTimes size={26} /> : <FaBars size={26} />}
-        </button>
-      </div>
-
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t border-gray-200">
-          <nav className="flex flex-col px-6 py-6 gap-4">
+          <nav className="hidden md:flex items-center gap-6" aria-label="Main navigation">
             {navItems.map((item) => (
               <Link
-                key={item.label}
+                key={item.href}
                 href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="mobile-link font-semibold"
+                className={`text-[13.5px] font-semibold tracking-wide transition-colors duration-200 hover:text-[#d41ed3] ${
+                  pathname === item.href? "text-[#d41ed3]" : "text-[#111]"
+                }`}
               >
                 {item.label}
               </Link>
             ))}
-
-            <button
-              onClick={() => {
-                handleWhatsAppOrder();
-                setMobileMenuOpen(false);
-              }}
-              className="mt-4 rounded-md px-5 py-3 text-center font-semibold text-white cta-btn"
-            >
-              Order Now
-            </button>
           </nav>
+
+          {/* Order Now -> Products Page */}
+          <div className="hidden md:flex items-center">
+            <Link
+              href="/products"
+              className="flex items-center gap-2 bg-[#111] text-white px-5 py-2.5 rounded-full text-sm font-bold hover:bg-[#d41ed3] transition-colors duration-200"
+            >
+              <FaShoppingBag size={14} />
+              Order Now
+            </Link>
+          </div>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full bg-black/5 hover:bg-black/10 transition shrink-0"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+          >
+            {open? <FaTimes size={18} /> : <FaBars size={18} />}
+          </button>
+
+        </div>
+      </header>
+
+      {open && (
+        <div className="fixed inset-0 z-[99] md:hidden">
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setOpen(false)} />
+          <div className="absolute top-20 left-0 right-0 bg-white shadow-xl border-t border-black/5 max-h-[calc(100vh-80px)] overflow-y-auto">
+            <nav className="px-4 py-3 flex flex-col" aria-label="Mobile navigation">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setOpen(false)}
+                  className={`py-4 px-3 text-sm font-semibold border-b border-black/5 last:border-0 transition-colors duration-200 ${
+                    pathname === item.href? "text-[#d41ed3]" : "text-[#111]"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+
+              {/* Mobile Order Now -> Products Page */}
+              <Link
+                href="/products"
+                onClick={() => setOpen(false)}
+                className="mt-5 w-full bg-[#111] hover:bg-[#d41ed3] text-white py-3.5 rounded-full font-bold flex items-center justify-center gap-2 text-sm transition-colors duration-200"
+              >
+                <FaShoppingBag size={16} />
+                Order Now
+              </Link>
+            </nav>
+          </div>
         </div>
       )}
-
-      {/* Styles */}
-      <style jsx>{`
-        :global(.text-primary) {
-          color: #d41ed3; /* Inqothovu purple */
-        }
-
-        .nav-link {
-          font-size: 1.05rem;
-          position: relative;
-          transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-          color: #1df4f7; /* Inqothovu cyan */
-        }
-
-        .nav-link::after {
-          content: "";
-          position: absolute;
-          left: 0;
-          bottom: -6px;
-          width: 0;
-          height: 3px;
-          background: #1df4f7;
-          transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-          width: 100%;
-        }
-
-        .mobile-link {
-          font-size: 1rem;
-          color: #d41ed3;
-          transition: color 0.3s ease;
-        }
-
-        .mobile-link:hover {
-          color: #1df4f7;
-        }
-
-        .cta-btn {
-          background: linear-gradient(90deg, #d41ed3, #1df4f7);
-        }
-
-        .cta-btn:hover {
-          background: linear-gradient(90deg, #1df4f7, #d41ed3);
-        }
-      `}</style>
-    </header>
+    </>
   );
 }

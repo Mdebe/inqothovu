@@ -13,17 +13,17 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export default function Home() {
   return (
     <>
-      <Navbar />
+       
       <Hero />
       <AboutUs />
     
       <Services />
        <InqothovuShowcase />
       
-      <FAQ />
+       
        
       
-      <Footer />
+       
       <WhatsAppButton />
     </>
   );

@@ -41,7 +41,7 @@ export default function ServicesPage() {
 
   return (
     <>
-      <Navbar />
+       
 
       <main className="bg-white text-[#010a33]">
 
@@ -95,7 +95,7 @@ export default function ServicesPage() {
 
       </main>
 
-      <Footer />
+      
     </>
   );
 }

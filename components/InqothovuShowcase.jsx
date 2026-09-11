@@ -34,7 +34,7 @@ export default function InqothovuShowcase() {
           transition={{ duration: 0.7 }}
         >
           <Image
-            src="/images/perfume-hero-1.jpeg"
+            src="images/show.jpeg"
             alt="Inqothovu perfume collection"
             fill
             sizes="(max-width: 1024px) 100vw, 45vw"

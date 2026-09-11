@@ -30,7 +30,7 @@ export default function ContactPage() {
   return (
     <main className="bg-white text-[#010a33] min-h-screen">
 
-      <Navbar />
+       
 
       {/* CONTACT DETAILS + FORM */}
       <section className="max-w-7xl mx-auto px-6 py-16">
@@ -121,7 +121,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Footer />
+       
       
     </main>
   );

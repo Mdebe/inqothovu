@@ -37,7 +37,7 @@ function getImageLabel(filename: string) {
 export default function GalleryPage() {
   return (
     <main className="min-h-screen bg-white text-[#010a33]">
-      <Navbar />
+       
 
       <section className="bg-[#010a33] px-6 py-20 text-center text-white">
         <p className="mb-3 text-sm font-semibold uppercase tracking-[0.25em] text-[#1df4f7]">
@@ -73,7 +73,7 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      <Footer />
+       
     </main>
   );
 }

@@ -7,7 +7,7 @@ import React from "react";
 export default function DownloadAppPage() {
   return (
     <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-purple-50 to-purple-100 px-6">
-        <Navbar />
+        
       <div className="max-w-xl text-center bg-white p-10 rounded-3xl shadow-xl">
         <h1 className="text-4xl font-bold text-[#010a33] mb-4">
           Download Our App
@@ -45,7 +45,7 @@ export default function DownloadAppPage() {
         </p>
       </div>
       
-      <Footer />
+      
     </section>
     
   );

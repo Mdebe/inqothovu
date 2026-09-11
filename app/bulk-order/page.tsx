@@ -90,7 +90,7 @@ This is a bulk order for resale/stock. Please assist with payment details and de
 
   return (
     <main className="bg-[#fbfaf8] min-h-screen">
-      <Navbar />
+    
 
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0e7a8c] to-[#0a3a4a] text-white py-16 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
@@ -207,7 +207,7 @@ This is a bulk order for resale/stock. Please assist with payment details and de
         </div>
       </section>
 
-      <Footer />
+      
     </main>
   );
 }

@@ -4,8 +4,6 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import { FaShoppingCart, FaTimes, FaTrash, FaPlus, FaMinus, FaFire, FaBoxes } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import Navbar from "../../components/Navbar";
-import Footer from "../../components/Footer";
 
 type Variant = { label: string; price: number; size: string; isStock?: boolean; originalTotal?: number };
 type Product = {
@@ -21,7 +19,6 @@ type Product = {
 type CartItem = Product & { selectedVariant: Variant; qty: number };
 
 const products: Product[] = [
-  // --- FRAGRANCES with STOCK PRICES ---
   {
     id: "perfume",
     name: "Perfume",
@@ -70,8 +67,6 @@ const products: Product[] = [
       { label: "Stock 10x - R200", size: "10x10ml", price: 200, isStock: true, originalTotal: 300 },
     ]
   },
-
-  // --- CLEANING with UPDATED STOCK PRICES ---
   {
     id: "dish-liquid",
     name: "Dish Washing Liquid",
@@ -153,35 +148,35 @@ export default function ProductsPage() {
   const total = cart.reduce((sum, item) => sum + item.selectedVariant.price * item.qty, 0);
   const count = cart.reduce((sum, item) => sum + item.qty, 0);
 
+  // === FORCED WHATSAPP OPEN ===
   const handleCheckout = () => {
     if (cart.length === 0) return;
-    const phoneNumber = "27664449653";
+    const phoneNumber = "27723340746"; // use same number as navbar
     const orderList = cart.map(i => {
       const save = i.selectedVariant.originalTotal? ` (SAVE R${i.selectedVariant.originalTotal - i.selectedVariant.price})` : "";
       return `• ${i.qty}x ${i.name} (${i.selectedVariant.label}) - R${i.selectedVariant.price * i.qty}${save}`;
     }).join("\n");
-    const message = `Hello WP Inqothovu Smelling Good! 👋\n\nI would like to order:\n${orderList}\n\nTotal: R${total}\n\nStock prices included. Please confirm availability.`;
 
-    const url = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-    const a = document.createElement("a");
-    a.href = url;
-    a.target = "_blank";
-    a.rel = "noopener noreferrer";
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    const message = `Hello WP Inqothovu Smelling Good! 👋\n\nI would like to order:\n${orderList}\n\nTotal: R${total}\n\nPlease confirm availability and delivery.`;
+    const encoded = encodeURIComponent(message);
+    const waMeUrl = `https://wa.me/${phoneNumber}?text=${encoded}`;
+
+    // Force open - 100% works on mobile & desktop
+    const win = window.open(waMeUrl, "_blank");
+    if (!win) {
+      window.location.href = waMeUrl; // fallback if popup blocked
+    }
   };
 
   return (
     <main className="bg-[#fbfaf8] text-[#111] min-h-screen">
-      <Navbar />
 
       <section className="relative h- md:h- w-full overflow-hidden flex items-center justify-center">
         <div className="absolute inset-0 bg-gradient-to-br from-[#0e7a8c] via-[#0a6a7a] to-[#d81b60]" />
         <div className="relative text-white text-center px-6 max-w-3xl">
           <p className="tracking-[0.3em] text- font-bold opacity-80">WP INQOTHOVU • STOCK FROM R200</p>
-          <h1 className="text-5xl md:text-7xl font-black mt-2">SMELLING GOOD</h1>
-          <p className="mt-3 text-white/80 text-sm">Roll-On Stock 10 for R200 • Perfume 10 for R500 • Car Diffuser 10 for R300 • Pine Gel 10 for R300 • Dish Wash 10 for R300</p>
+          <h1 className="text-5xl md:text-7xl font-black mt-2 leading-none">SMELLING GOOD</h1>
+          <p className="mt-3 text-white/80 text-">Roll-On Stock 10 for R200 • Perfume 10 for R500 • Car Diffuser 10 for R300 • Pine Gel 10 for R300 • Dish Wash 10 for R300</p>
         </div>
         <button onClick={() => setCartOpen(true)} className="absolute top-6 right-6 bg-white text-[#0e7a8c] p-4 rounded-full shadow-xl">
           <FaShoppingCart />
@@ -189,9 +184,9 @@ export default function ProductsPage() {
         </button>
       </section>
 
-      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-wrap gap-2">
+      <div className="max-w-7xl mx-auto px-6 py-6 flex flex-wrap gap-2 items-center">
         {["All", "Fragrance", "Cleaning"].map(c => (
-          <button key={c} onClick={() => setFilter(c as any)} className={`px-5 py-2 rounded-full text-sm font-bold transition ${filter === c? "bg-[#0e7a8c] text-white" : "bg-white border border-black/10 text-black/70"}`}>{c}</button>
+          <button key={c} onClick={() => setFilter(c as any)} className={`px-5 py-2 rounded-full text- font-bold transition ${filter === c? "bg-[#0e7a8c] text-white" : "bg-white border border-black/10 text-black/70"}`}>{c}</button>
         ))}
         <div className="ml-auto flex items-center gap-2 bg-[#d81b60] text-white px-4 py-1.5 rounded-full text- font-bold"><FaBoxes /> STOCK DEALS: SAVE UP TO 50%</div>
       </div>
@@ -244,36 +239,34 @@ export default function ProductsPage() {
               </div>
 
               <div className="flex-1 overflow-y-auto p-4 space-y-3">
-                {cart.length === 0 && <p className="text-center text-black/50 mt-20">Your cart is empty. Add some WP Inqothovu products!</p>}
+                {cart.length === 0 && <p className="text-center text-black/50 mt-20 text-">Your cart is empty. Add some WP Inqothovu products!</p>}
                 {cart.map((item, idx) => (
                   <div key={idx} className="flex gap-3 bg-[#f8f8f7] rounded-2xl p-3 border border-black/5">
                     <div className="relative w-16 h-16 bg-white rounded-xl overflow-hidden border"><Image src={item.img} alt={item.name} fill className="object-contain p-1" /></div>
                     <div className="flex-1">
-                      <p className="font-bold text-sm">{item.name}</p>
+                      <p className="font-bold text-">{item.name}</p>
                       <p className="text- text-black/60">{item.selectedVariant.label} {item.selectedVariant.isStock && "🔥"}</p>
                       <p className="text- font-bold text-[#0e7a8c]">R{item.selectedVariant.price * item.qty} {item.selectedVariant.isStock && item.selectedVariant.originalTotal && <span className="text- text-green-600">(Save R{(item.selectedVariant.originalTotal - item.selectedVariant.price) * item.qty})</span>}</p>
                       <div className="flex items-center gap-2 mt-1">
-                        <button type="button" onClick={() => setCart(cart.map((c,i) => i===idx? {...c, qty: Math.max(1, c.qty-1)} : c))} className="w-6 h-6 bg-white border rounded-full flex items-center justify-center"><FaMinus size={10}/></button>
-                        <span className="text-sm font-bold">{item.qty}</span>
-                        <button type="button" onClick={() => setCart(cart.map((c,i) => i===idx? {...c, qty: c.qty+1} : c))} className="w-6 h-6 bg-white border rounded-full flex items-center justify-center"><FaPlus size={10}/></button>
+                        <button type="button" onClick={() => setCart(cart.map((c, i) => i === idx? {...c, qty: Math.max(1, c.qty - 1) } : c))} className="w-6 h-6 bg-white border rounded-full flex items-center justify-center"><FaMinus size={10} /></button>
+                        <span className="text- font-bold">{item.qty}</span>
+                        <button type="button" onClick={() => setCart(cart.map((c, i) => i === idx? {...c, qty: c.qty + 1 } : c))} className="w-6 h-6 bg-white border rounded-full flex items-center justify-center"><FaPlus size={10} /></button>
                       </div>
                     </div>
-                    <button type="button" onClick={() => setCart(cart.filter((_,i)=>i!==idx))} className="text-red-500"><FaTrash size={14}/></button>
+                    <button type="button" onClick={() => setCart(cart.filter((_, i) => i!== idx))} className="text-red-500"><FaTrash size={14} /></button>
                   </div>
                 ))}
               </div>
 
               <div className="p-6 border-t bg-white">
                 <div className="flex justify-between font-black text-lg mb-4"><span>Total</span><span>R{total}</span></div>
-                <button type="button" onClick={handleCheckout} disabled={cart.length===0} className="w-full bg-gradient-to-r from-[#0e7a8c] to-[#d81b60] text-white font-bold py-4 rounded-full disabled:opacity-40 shadow-lg">Checkout via WhatsApp</button>
+                <button type="button" onClick={handleCheckout} disabled={cart.length === 0} className="w-full bg-gradient-to-r from-[#0e7a8c] to-[#d81b60] text-white font-bold py-4 rounded-full disabled:opacity-40 shadow-lg text-">Checkout via WhatsApp</button>
                 <p className="text- text-center text-black/50 mt-2">Stock: Roll-On 10 for R200 • Perfume 10 for R500 • Car Diff 10 for R300</p>
               </div>
             </motion.div>
           </>
         )}
       </AnimatePresence>
-
-      <Footer />
     </main>
   );
 }
