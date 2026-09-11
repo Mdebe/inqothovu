@@ -151,7 +151,7 @@ export default function ProductsPage() {
   // === FORCED WHATSAPP OPEN ===
   const handleCheckout = () => {
     if (cart.length === 0) return;
-    const phoneNumber = "27723340746"; // use same number as navbar
+    const phoneNumber = "+27 66 444 9653"; // use same number as navbar
     const orderList = cart.map(i => {
       const save = i.selectedVariant.originalTotal? ` (SAVE R${i.selectedVariant.originalTotal - i.selectedVariant.price})` : "";
       return `• ${i.qty}x ${i.name} (${i.selectedVariant.label}) - R${i.selectedVariant.price * i.qty}${save}`;
