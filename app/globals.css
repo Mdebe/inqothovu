@@ -3,38 +3,77 @@
 :root {
   /* Base UI */
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #111827;
 
-  /* Brand colors */
-  --primary: #010a33; /* Navy */
-  --accent: #c70207;  /* Red */
+  /* Brand - WP Inqothovu */
+  --primary: #0e7a8c; /* teal from flyers */
+  --accent: #d81b60;  /* magenta from flyers */
+  --navy: #010a33;
 }
 
-/* Tailwind theme bridge */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
   --color-primary: var(--primary);
   --color-accent: var(--accent);
-
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+/* FIX: Force light theme even if system is dark - your flyers are white */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;
-    --foreground: #ededed;
-
-    /* Brand colors stay the same in dark mode */
-    --primary: #010a33;
-    --accent: #c70207;
+    --foreground: #111827;
+    --primary: #0e7a8c;
+    --accent: #d81b60;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === FORM FIX - Make all inputs visible === */
+input,
+select,
+textarea {
+  color: #111827 !important;
+  background-color: #ffffff !important;
+  border-color: rgba(0,0,0,0.15) !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #6b7280 !important;
+  opacity: 1;
+}
+
+/* Select options */
+select option {
+  color: #111827;
+  background: #ffffff;
+}
+
+/* Focus states */
+input:focus,
+select:focus,
+textarea:focus {
+  color: #111827 !important;
+  background-color: #ffffff !important;
+  border-color: #0e7a8c !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(14,122,140,0.15);
+}
+
+/* Remove autofill white-on-white bug */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #111827 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

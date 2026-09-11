@@ -1,29 +1,30 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const slides = [
   {
-    image: "/images/inqoth.jpeg",
-    title: "Luxury Fragrances",
-    subtitle: "That Last All Day",
+    image: "/images//h1.png",
+    mobileImage: "/images/h3m.jpg",
+    title: "Powerful Clean. Trusted Results"
   },
   {
-    image: "/images/hero2.jpg",
-    title: "Car & Home Diffusers",
-    subtitle: "Fresh Every Moment",
+    image: "/images/h2.png",
+    mobileImage: "/images/h2m.jpg",
+    title: "Pine Gel Collection"
   },
   {
-    image: "/images/hero3.jpg",
-    title: "Wholesale & Retail",
-    subtitle: "Available in Stock",
+    image: "/images/h3.png",
+    mobileImage: "/images/h1m.jpg",
+    title: "Wholesale & Retail"
   },
 ];
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const touchStartX = useRef(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -32,86 +33,102 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  const primary = "#d41ed3";
-  const accent = "#1df4f7";
-  const secondary = "#a0a9a6";
+  const onTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const onTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff < 0) setCurrent((p) => (p + 1) % slides.length);
+      else setCurrent((p) => (p - 1 + slides.length) % slides.length);
+    }
+    touchStartX.current = null;
+  };
 
   return (
-    <section className="relative h-[85vh] w-full overflow-hidden">
-      {/* Slides */}
+    <section
+      className="relative w-full overflow-hidden
+                 h- h- min-h-screen
+                 sm:h-screen
+                 md:min-h-[calc(100vh-80px)] md:h-[calc(100vh-80px)]"
+      onTouchStart={onTouchStart}
+      onTouchEnd={onTouchEnd}
+    >
+      {/* Slides - Responsive Images */}
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 transition-opacity duration-1000 ${
-            index === current ? "opacity-100" : "opacity-0"
+          className={`absolute inset-0 transition-opacity duration-700 ${
+            index === current? "opacity-100" : "opacity-0"
           }`}
         >
-          <Image
-            src={slide.image}
-            alt={slide.title}
-            fill
-            sizes="100vw"
-            priority={index === 0}
-            className="object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-[#0f0015]/80 via-[#2b0030]/70 to-black/80" />
+          {/* Desktop Image */}
+          <div className="hidden sm:block absolute inset-0">
+            <Image
+              src={slide.image}
+              alt={slide.title}
+              fill
+              sizes="100vw"
+              priority={index === 0}
+              className="object-cover object-center"
+            />
+          </div>
+          {/* Mobile Image - Full Screen Cover */}
+          <div className="block sm:hidden absolute inset-0">
+            <Image
+              src={slide.mobileImage}
+              alt={slide.title}
+              fill
+              sizes="100vw"
+              priority={index === 0}
+              className="object-cover object-center"
+            />
+          </div>
+
+          <div className="absolute inset-0 bg-black/10 sm:bg-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#010a33]/90 via-[#010a33]/20 to-transparent" />
         </div>
       ))}
 
-      {/* Content */}
-      <div className="relative z-20 max-w-7xl mx-auto h-full flex items-center justify-center px-6 text-center">
-        <div className="text-white max-w-2xl">
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            Inqothovu Smelling Good
-          </h1>
-
-          <h2 className="mt-3 text-2xl md:text-3xl font-semibold" style={{ color: accent }}>
-            {slides[current].title}: {slides[current].subtitle}
-          </h2>
-
-          <p className="mt-5 text-lg" style={{ color: secondary }}>
-            Inqothovu Smelling Good offers premium car diffusers, house
-            diffusers, roll-ons and perfumes in Richards Bay, KwaZulu-Natal.
-            Shop individually or place a bulk order for delivery across the
-            surrounding area.
+      {/* Content - Bottom */}
+      <div className="relative z-20 flex h- h- min-h-screen sm:h-screen md:min-h-[calc(100vh-80px)] md:h-[calc(100vh-80px)] max-w-7xl mx-auto items-end px-5 sm:px-6 pb-10 sm:pb-16 pt-20">
+        <div className="w-full">
+          <p className="mb-5 inline-flex items-center gap-3 text- sm:text-xs font-bold uppercase tracking-[0.3em] text-[#1df4f7]">
+            <span className="h-px w-8 sm:w-10 bg-[#1df4f7]" />
+            Mandlanzini, Richards Bay, KZN
           </p>
 
-          {/* ✅ Linked to Products Page */}
-          <Link
-            href="/products"
-            className="inline-block mt-8 px-7 py-3 rounded-md font-semibold text-white transition hover:scale-105"
-            style={{
-              background: `linear-gradient(90deg, ${primary}, ${accent})`,
-            }}
-          >
-            Shop Now →
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-3 w-full">
+            <Link
+              href="/products"
+              className="w-full sm:w-auto text-center rounded-md bg-[#d41ed3] px-7 py-4 sm:py-3 text- font-semibold text-white transition hover:bg-[#b817b6] active:scale-[0.98]"
+            >
+              Shop fragrances
+            </Link>
+            <Link
+              href="/gallery"
+              className="w-full sm:w-auto text-center rounded-md border border-white/40 bg-white/10 backdrop-blur-md px-7 py-4 sm:py-3 text- font-semibold text-white transition hover:border-[#1df4f7] hover:text-[#1df4f7] active:scale-[0.98]"
+            >
+              View the gallery
+            </Link>
+          </div>
         </div>
       </div>
 
-      {/* Slider Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3 z-20">
+      {/* Dots */}
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 sm:left-auto sm:translate-x-0 sm:right-8 z-20 flex gap-2.5">
         {slides.map((_, i) => (
           <button
             key={i}
             onClick={() => setCurrent(i)}
-            aria-label={`Slide ${i + 1}`}
-            className="h-3 w-3 rounded-full transition"
-            style={{
-              backgroundColor:
-                i === current ? accent : "rgba(255,255,255,0.4)",
-            }}
+            aria-label={`Go to slide ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${i === current? "w-8 bg-[#1df4f7]" : "w-6 bg-white/50 hover:bg-white/80"}`}
           />
         ))}
       </div>
 
-      {/* Accent Bar */}
-      <div
-        className="absolute bottom-0 w-full h-10 z-20"
-        style={{
-          background: `linear-gradient(90deg, ${primary}, ${accent})`,
-        }}
-      />
+      <div className="absolute bottom-0 z-20 h-1.5 w-full bg-gradient-to-r from-[#d41ed3] to-[#1df4f7]" />
     </section>
   );
 }
