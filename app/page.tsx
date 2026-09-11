@@ -30,18 +30,12 @@ export default function Home() {
   return (
     <>
       <Hero />
-
-      <section className="max-w-7xl mx-auto px-6 pt-6">
-        <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text- font-bold tracking-wide border border-green-200">
-          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-          TOP RATED IN MANDLANZINI, RICHARDS BAY • OPEN TODAY 08:00-19:00
-        </div>
-      </section>
+ 
 
       <AboutUs />
       <Services />
       <InqothovuShowcase />
-      <WhyUs />
+       
 
       {/* LOCATION MAP */}
       <section className="px-6 py-10 bg-white">
@@ -65,55 +59,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TOP STORE SECTION - RANKS YOU */}
-      <section className="px-6 py-14 bg-black text-white">
-        <div className="max-w-7xl mx-auto">
-          <p className="text-[#0e7a8c] font-bold text- tracking-[0.2em]">TOP RATED STORE IN RICHARDS BAY</p>
-          <h2 className="text-3xl md:text-5xl font-black mt-3 leading-[0.9]">Top Perfume & Washing Product Store</h2>
+       
+       
+      
 
-          <div className="grid md:grid-cols-2 gap-10 mt-10">
-            <div className="bg-white/5 border border-white/10 rounded- p-6">
-              <h3 className="font-black text-lg">🏆 #1 Perfume Store</h3>
-              <p className="text- text-white/50 mt-1">Richards Bay & Mandlanzini</p>
-              <ul className="mt-4 text- leading-7 text-white/70">
-                <li>• Car Diffusers 8ml - R50 (Stock: 10 for R300)</li>
-                <li>• House Diffusers - R200 (Stock: 10 for R1500)</li>
-                <li>• 50ml Perfumes - R100 (Stock: 10 for R500)</li>
-                <li>• Roll-on 10ml - R30 (Stock: 10 for R200)</li>
-                <li>• 50+ long lasting fragrances</li>
-              </ul>
-              <Link href="/products" className="inline-block mt-5 bg-white text-black px-5 py-2 rounded-full text- font-bold">Shop Perfumes</Link>
-            </div>
-
-            <div className="bg-[#0e7a8c]/20 border border-[#0e7a8c]/30 rounded- p-6">
-              <h3 className="font-black text-lg">🧹 Top Cleaning Products Store</h3>
-              <p className="text- text-white/50 mt-1">Washing Products Supplier</p>
-              <ul className="mt-4 text- leading-7 text-white/70">
-                <li>• Dish Washing Liquid - 400ml R15, 750ml R50, 5L R220</li>
-                <li>• Pine Gel - 1L R50, 5L R140, 20L R500</li>
-                <li>• Thickened Bleach - 1L R30, 5L R130</li>
-                <li>• Handy Chemi - 1L R30, 5L R130</li>
-                <li>• Bulk 25L from R330 - Start Business R200</li>
-              </ul>
-              <Link href="/products" className="inline-block mt-5 bg-[#0e7a8c] text-white px-5 py-2 rounded-full text- font-bold">Shop Cleaning</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <FAQ />
-      <BookingForm />
-      <Contact />
-
-      {/* SEO TEXT FOR GOOGLE */}
-      <section className="bg-[#fbfaf8] border-t px-6 py-10">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="font-black">Inqothovu Smelling Good — Perfume & Cleaning Products Store Mandlanzini, Richards Bay 3900</h2>
-          <p className="mt-3 text- leading-relaxed text-black/60">
-            Inqothovu Smelling Good is the top rated perfume and washing product store located at Mandlanzini Phase 7 next to Fantocy Creche, Richards Bay, KwaZulu-Natal 3900, South Africa. We sell premium fragrances: car diffusers, house diffusers, roll-on and perfumes. We also supply household cleaning products: dish washing liquid, pine gel, thickened bleach and handy ammonia chemi. We offer retail and bulk stock prices from R200 to start your own business. Service areas: Mandlanzini, Richards Bay CBD, Brackenham, Aquadene, Meerensee, Empangeni, Esikhaleni, Mtubatuba, and all over KZN. Order on WhatsApp 066 444 9653 or email sinikeziwendiyaza@gmail.com. Best perfume store in Richards Bay. Best cleaning products store in Richards Bay.
-          </p>
-        </div>
-      </section>
+      
 
       <WhatsAppButton />
     </>
