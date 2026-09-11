@@ -9,17 +9,17 @@ import Footer from "../../components/Footer";
 const aboutSlides = [
   {
     image: "/images/inqoth.jpeg",
-    mobile: "/images/banners/sage_green_brand_banner.webp",
+    mobile: "/images/inqoth.jpeg",
     title: "WP Team"
   },
   {
-    image: "/images/banners/wp_product_hero_banner.webp",
-    mobile: "/images/banners/wp_inqothovu_banner.webp",
+    image: "/images/gallery/g2.jpeg",
+    mobile: "/images/gallery/g2.jpeg",
     title: "All Products"
   },
   {
-    image: "/images/banners/wp_inqothovu_hero_banner_4.webp",
-    mobile: "/images/banners/sage_green_brand_banner.webp",
+    image: "/images/gallery/q7",
+    mobile: "/images/gallery/q7.jpeg",
     title: "Premium Collection"
   },
 ];

@@ -65,7 +65,6 @@ function ProductCard({ product }) {
     x.set(offsetX);
     y.set(offsetY);
   }
-
   function handleMouseLeave() {
     x.set(0);
     y.set(0);
@@ -87,17 +86,19 @@ function ProductCard({ product }) {
       >
         <div
           className="absolute inset-0 rounded-3xl opacity-0 group-hover:opacity-100 transition duration-500 blur-xl"
-          style={{
-            background: `linear-gradient(90deg, ${primary}, ${accent})`,
-          }}
+          style={{ background: `linear-gradient(90deg, ${primary}, ${accent})` }}
         />
 
         <div className="relative bg-white rounded-3xl overflow-hidden h-full flex flex-col">
-          <div className="absolute top-4 left-4 z-10 bg-[#0e7a8c] text-white text- tracking-[0.15em] px-3 py-1 rounded-full font-bold">
-            {product.badge}
-          </div>
-          <div className="absolute top-4 right-4 z-10 bg-[#d81b60] text-white text- font-bold px-3 py-1 rounded-full">
-            STOCK DEALS
+
+          {/* FIXED TAGS - NO OVERLAP */}
+          <div className="absolute top-0 left-0 right-0 z-10 flex items-start justify-between gap-2 p-3 pointer-events-none">
+            <span className="bg-[#0e7a8c] text-white text- sm:text- tracking-[0.12em] px-2.5 py-1 rounded-full font-bold leading-none shrink-0">
+              {product.badge}
+            </span>
+            <span className="bg-[#d81b60] text-white text- sm:text- font-bold px-2.5 py-1 rounded-full leading-none shrink-0">
+              STOCK
+            </span>
           </div>
 
           <div className="relative h-64 w-full bg-[#f7f7fb]">
@@ -106,11 +107,11 @@ function ProductCard({ product }) {
               alt={product.title.join(" ")}
               fill
               sizes="(max-width: 768px) 100vw, 33vw"
-              className="object-contain p-4"
+              className="object-contain p-4 pt-10"
             />
           </div>
 
-          <div className="p-7 text-center flex-1 flex flex-col">
+          <div className="p-5 sm:p-7 text-center flex-1 flex flex-col">
             <h4 className="text- font-bold mb-2 leading-tight">
               <span style={{ color: primary }}>{product.title[0]}</span>{" "}
               {product.title[1] && <span style={{ color: accent }}>{product.title[1]}</span>}
@@ -125,7 +126,6 @@ function ProductCard({ product }) {
                 {product.price} <span className="text- font-medium text-black/50">each</span>
               </p>
 
-              {/* Stock Pricing */}
               <div className="bg-[#fff0f5] border border-[#d81b60]/20 rounded-2xl p-3">
                 <p className="text- font-bold tracking-[0.1em] text-[#d81b60]">{product.stock.label} - {product.stock.price}</p>
                 <p className="text- mt-1">
