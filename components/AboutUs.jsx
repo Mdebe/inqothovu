@@ -21,7 +21,7 @@ export default function AboutUs() {
           transition={{ duration: 0.8 }}
         >
           <Image
-            src="/images/car.jpg" // replace with your desired image
+            src="/images/inqoth.jpeg" // replace with your desired image
             alt="Inqothovu Smelling Good"
             fill
             className="object-cover rounded-3xl"
@@ -43,7 +43,8 @@ export default function AboutUs() {
           <p className="mt-6 text-lg leading-relaxed" style={{ color: secondary }}>
             Inqothovu Smelling Good is a proudly local fragrance brand
             specializing in premium car diffusers, house diffusers,
-            roll-on fragrances, and long-lasting perfumes.
+            roll-on fragrances, and long-lasting perfumes in Richards Bay,
+            KwaZulu-Natal.
           </p>
 
           <p className="mt-4 text-lg leading-relaxed" style={{ color: secondary }}>

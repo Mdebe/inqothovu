@@ -6,7 +6,7 @@ import Link from "next/link";
 
 const slides = [
   {
-    image: "/images/hero4.jpg",
+    image: "/images/inqoth.jpeg",
     title: "Luxury Fragrances",
     subtitle: "That Last All Day",
   },
@@ -62,17 +62,18 @@ export default function Hero() {
       <div className="relative z-20 max-w-7xl mx-auto h-full flex items-center justify-center px-6 text-center">
         <div className="text-white max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
-            {slides[current].title}
-            <br />
-            <span style={{ color: accent }}>
-              {slides[current].subtitle}
-            </span>
+            Inqothovu Smelling Good
           </h1>
+
+          <h2 className="mt-3 text-2xl md:text-3xl font-semibold" style={{ color: accent }}>
+            {slides[current].title}: {slides[current].subtitle}
+          </h2>
 
           <p className="mt-5 text-lg" style={{ color: secondary }}>
             Inqothovu Smelling Good offers premium car diffusers, house
-            diffusers, roll-ons and perfumes. We sell individually and in
-            bulk stock across Richards Bay.
+            diffusers, roll-ons and perfumes in Richards Bay, KwaZulu-Natal.
+            Shop individually or place a bulk order for delivery across the
+            surrounding area.
           </p>
 
           {/* ✅ Linked to Products Page */}

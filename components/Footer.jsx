@@ -10,6 +10,7 @@ export default function Footer() {
 
   const phoneNumber = "27664449653"; // International format (no +)
   const whatsappMessage = "Hello! I'm interested in Inqothovu Smelling Good products.";
+  const whatsappChannelUrl = "https://whatsapp.com/channel/0029VbCfdlP9hXFEQgzaXh0P";
 
   return (
     <footer
@@ -80,6 +81,16 @@ export default function Footer() {
               WhatsApp Us
             </a>
 
+            <a
+              href={whatsappChannelUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-black transition"
+            >
+              <FaWhatsapp />
+              Follow our WhatsApp Channel
+            </a>
+
             {/* Social Icons */}
             <div className="flex gap-4 mt-4">
               <a href="#" className="bg-white text-black p-2 rounded-full hover:scale-110 transition">
@@ -103,11 +114,12 @@ export default function Footer() {
         <p className="mt-1">
           Developed by{" "}
           <a
-            href="https://github.com/yourusername"
+            href="https://www.amaphisi.co.za"
             target="_blank"
+            rel="noopener noreferrer"
             className="underline hover:text-black transition"
           >
-            Mdebe
+            Amaphisi
           </a>
         </p>
       </div>

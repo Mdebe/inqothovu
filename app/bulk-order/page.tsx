@@ -25,7 +25,7 @@ export default function BulkOrderPage() {
   const handleWhatsAppOrder = () => {
     if (!selectedProduct) return;
 
-    const message = `Hello Inqothove 👋
+    const message = `Hello Inqothovu
 
 I would like to place a BULK ORDER:
 
@@ -53,7 +53,7 @@ Please assist me with payment details.`;
           Bulk Orders
         </h1>
         <p className="text-lg md:text-xl max-w-2xl mx-auto">
-          Order Inqothove products in bulk for events, gifts, or resale.
+          Order Inqothovu products in bulk for events, gifts, or resale.
         </p>
       </section>
 

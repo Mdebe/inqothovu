@@ -107,10 +107,12 @@ export default function PricingPage() {
           <p>
             Developed by{" "}
             <a
-              href="https://github.com/yourusername"
+              href="https://www.amaphisi.co.za"
+              target="_blank"
+              rel="noopener noreferrer"
               className="underline hover:text-white/90"
             >
-              Mdebe
+              Amaphisi
             </a>
           </p>
         </div>
