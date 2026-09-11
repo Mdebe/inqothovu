@@ -6,6 +6,11 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://inqothovu.co.za";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/logo.png",
+  },
   title: {
     default: "Inqothovu Smelling Good | Fragrances in Richards Bay",
     template: "%s | Inqothovu Smelling Good",
